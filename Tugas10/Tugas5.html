@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 5 - jQuery Method Chaining</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+        #notification {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            width: 300px;
+            padding: 15px;
+            text-align: center;
+            color: rgb(205, 198, 225);
+            background-color: #65051e;
+            border-radius: 5px;
+            display: none; 
+            opacity: 0;
+        }
+        .container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Notifikasi</h2>
+    <button id="show-btn">Tampilkan Notifikasi</button>
+
+    <div class="container">
+        <div id="notification">
+            Halloo, Apa kabar!?      </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $("#show-btn").click(function(){
+                $("#notification").stop(true).css({"background-color": "#65051e", "display": "none", "opacity": 0});
+
+                $("#notification")
+                    .css("background-color", "Maroon") 
+                    .animate({opacity: 1, height: 'toggle'}, {duration: 600, specialEasing: {opacity: 'linear', height: 'swing'}}) // Memudar masuk & Meluncur ke bawah (menampilkan elemen)
+                    .delay(3000)
+                    .animate({opacity: 0, height: 'toggle'}, {duration: 600, specialEasing: {opacity: 'linear', height: 'swing'}}); // Memudar keluar & Meluncur ke atas (menyembunyikan elemen)
+
+                $("h2").hide( "slow", function (){});
+                $("h2").show(2000)("slow", function (){});
+                alert("")
+            });
+        });
+    </script>
+
+</body>
+</html>
